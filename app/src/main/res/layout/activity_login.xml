@@ -37,6 +37,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/welcom" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="welcome"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
             <EditText
                 android:id="@+id/etSEmailAddress"
                 android:layout_width="match_parent"
@@ -102,6 +116,7 @@
                 android:textColor="#F8B510"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
