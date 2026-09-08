@@ -35,8 +35,10 @@
                 android:layout_height="76dp"
                 android:layout_gravity="center"
                 android:text="+"
+                android:textColorLink="#f2c560"
                 android:textSize="40dp"
-                app:iconSize="50dp" />
+                app:iconSize="50dp"
+                android:background="#f2c560"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,26 +47,29 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/HomeButton"
-                    android:layout_width="100dp"
-                    android:layout_height="136dp"
+                <ImageButton
+                    android:id="@+id/Homebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    app:srcCompat="@drawable/houseicon"
+                    android:background="#725030"/>
 
-                <Button
+                <ImageButton
                     android:id="@+id/Barrybtn"
-                    android:layout_width="100dp"
-                    android:layout_height="136dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    app:srcCompat="@drawable/bearicon"
+                    android:background="#725030"/>
 
-                <Button
-                    android:id="@+id/Analycticsbtn"
-                    android:layout_width="100dp"
-                    android:layout_height="136dp"
+                <ImageButton
+                    android:id="@+id/Analyticsbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    app:srcCompat="@drawable/analyticsicon"
+                    android:background="#725030"/>
 
             </LinearLayout>
         </LinearLayout>
