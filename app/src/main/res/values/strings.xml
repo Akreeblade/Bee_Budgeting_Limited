@@ -3,4 +3,5 @@
     <string name="confirm_password">Confirm Password\n</string>
     <string name="signed">Signed\n</string>
     <string name="already_have_an_account_login">Already have an account login\n</string>
+    <string name="backbutton">Back</string>
 </resources>
