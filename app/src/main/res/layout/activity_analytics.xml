@@ -12,39 +12,42 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="519dp"
-            android:layout_gravity="top"
-            android:foregroundGravity="top"
-            android:gravity="bottom|top"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- CardView must wrap something, or use layout_height="0dp" with weights -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Horizontal layout holding your buttons and image -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:layout_gravity="top"
-                android:foregroundGravity="top"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button"
-                    android:layout_width="270dp"
-                    android:layout_height="match_parent"
+                    android:id="@+id/button5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="Button 1" />
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="366dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:alpha="0"
                     app:srcCompat="@drawable/house" />
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="260dp"
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    app:srcCompat="@drawable/cogicon" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -57,42 +60,16 @@
             android:gravity="bottom"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="73dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="146dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/house" />
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="143dp"
-                    android:layout_height="62dp"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/Addbtn"
-                    android:layout_width="77dp"
-                    android:layout_height="76dp"
-                    android:layout_gravity="center"
-                    android:text="+"
-                    android:textSize="40dp"
-                    app:iconSize="50dp" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/house" />
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/Addbtn"
+                android:layout_width="77dp"
+                android:layout_height="76dp"
+                android:layout_gravity="center"
+                android:text="+"
+                android:textColorLink="#f2c560"
+                android:textSize="40dp"
+                app:iconSize="50dp"
+                android:background="#f2c560"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,26 +78,29 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <Button
+                <ImageButton
                     android:id="@+id/Homebtn"
-                    android:layout_width="100dp"
-                    android:layout_height="136dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    app:srcCompat="@drawable/houseicon"
+                    android:background="#725030"/>
 
-                <Button
+                <ImageButton
                     android:id="@+id/Barrybtn"
-                    android:layout_width="100dp"
-                    android:layout_height="136dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    app:srcCompat="@drawable/bearicon"
+                    android:background="#725030"/>
 
-                <Button
-                    android:id="@+id/Analycticsbtn"
-                    android:layout_width="100dp"
-                    android:layout_height="136dp"
+                <ImageButton
+                    android:id="@+id/Analyticsbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    app:srcCompat="@drawable/analyticsicon"
+                    android:background="#725030"/>
 
             </LinearLayout>
         </LinearLayout>
