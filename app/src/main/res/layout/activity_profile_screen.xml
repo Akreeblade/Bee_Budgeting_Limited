@@ -50,6 +50,54 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="214dp"
+            app:srcCompat="@drawable/house" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Enamil"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Button" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daily streak"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Button" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Achievements"
+            android:textAlignment="center" />
+
     </LinearLayout>
 
     <!-- 2. OPTIONAL DRAWER MENU (If you want a side menu, it goes here with android:layout_gravity="start") -->
