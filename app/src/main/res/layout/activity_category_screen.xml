@@ -63,7 +63,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="57dp"
-            android:text="Create new category "
+            android:text="@string/create_new_category"
             android:textAlignment="center"
             android:textSize="34sp" />
 

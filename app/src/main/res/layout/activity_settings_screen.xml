@@ -42,7 +42,7 @@
                 android:layout_width="232dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="\nSettings"
+                android:text="@string/nsettings"
                 android:textAlignment="center"
                 android:textColor="#000000" />
 
@@ -60,28 +60,28 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:text="Account information"
+            android:text="@string/account_information"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="37dp"
-            android:text="Recurring payments"
+            android:text="@string/recurring_payments"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Budget goals"
+            android:text="@string/budget_goals"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="App Themes"
+            android:text="@string/app_themes"
             android:textAlignment="center" />
 
     </LinearLayout>

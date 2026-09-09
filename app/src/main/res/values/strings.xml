@@ -4,4 +4,22 @@
     <string name="signed">Signed\n</string>
     <string name="already_have_an_account_login">Already have an account login\n</string>
     <string name="backbutton">\nBack</string>
+    <string name="account_information">Account information</string>
+    <string name="recurring_payments">Recurring payments</string>
+    <string name="budget_goals">Budget goals</string>
+    <string name="app_themes">App Themes</string>
+    <string name="nsettings">\nSettings</string>
+    <string name="username">Username</string>
+    <string name="user_email">User Email</string>
+    <string name="button">Button</string>
+    <string name="daily_streak">Daily streak</string>
+    <string name="achievements">Achievements</string>
+    <string name="income">Income</string>
+    <string name="save">save</string>
+    <string name="create_new_category">Create new category</string>
+    <string name="hunger">Hunger</string>
+    <string name="barry">Barry</string>
+    <string name="plus">+</string>
+    <string name="choose_icon">Choose icon</string>
+    <string name="is_this_an_expense_or_income">Is this an expense or income</string>
 </resources>

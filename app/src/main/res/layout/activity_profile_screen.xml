@@ -60,14 +60,14 @@
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="@string/username"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User Enamil"
+            android:text="@string/user_email"
             android:textAlignment="center" />
 
         <Button
@@ -75,13 +75,13 @@
             android:layout_width="131dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Button" />
+            android:text="@string/button" />
 
         <TextView
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Daily streak"
+            android:text="@string/daily_streak"
             android:textAlignment="center" />
 
         <Button
@@ -95,7 +95,7 @@
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Achievements"
+            android:text="@string/achievements"
             android:textAlignment="center" />
 
     </LinearLayout>
