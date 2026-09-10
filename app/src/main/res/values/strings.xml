@@ -22,4 +22,11 @@
     <string name="plus">+</string>
     <string name="choose_icon">Choose icon</string>
     <string name="is_this_an_expense_or_income">Is this an expense or income</string>
+    <color name ="Gray_brown">#725030</color>
+    <color name ="Dark_brown">#4c1e01</color>
+    <color name ="Deep_brown">#4c1e01</color>
+    <color name ="Cream">#f6f2de</color>
+    <color name ="Bright_yellow">#f9c02a</color>
+
+
 </resources>
