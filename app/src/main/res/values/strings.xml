@@ -2,7 +2,7 @@
     <string name="app_name">Bee Budgeting Limited</string>
     <string name="confirm_password">Confirm Password\n</string>
     <string name="signed">Signed\n</string>
-    <string name="already_have_an_account_login">Already have an account login\n</string>
+    <string name="already_have_an_account_login">Already have an account? Login\n</string>
     <string name="backbutton">\nBack</string>
     <string name="account_information">Account information</string>
     <string name="recurring_payments">Recurring payments</string>
@@ -22,6 +22,8 @@
     <string name="plus">+</string>
     <string name="choose_icon">Choose icon</string>
     <string name="is_this_an_expense_or_income">Is this an expense or income</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
     <color name ="Gray_brown">#725030</color>
     <color name ="Dark_brown">#4c1e01</color>
     <color name ="Deep_brown">#4c1e01</color>

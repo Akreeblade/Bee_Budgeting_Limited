@@ -23,5 +23,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        findViewById<Button>(R.id.btnSigned).setOnClickListener {
+            startActivity(Intent(this, Login::class.java))
+        }
     }
 }

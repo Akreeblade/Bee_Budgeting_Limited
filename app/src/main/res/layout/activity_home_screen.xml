@@ -65,27 +65,27 @@
             android:layout_gravity="fill_horizontal"
             android:layout_marginTop="65dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/overviewArea"
-                android:layout_width="400dp"
-                android:layout_height="250dp"
-                app:cardBackgroundColor="@color/Deep_brown"
-                app:cardCornerRadius="25dp">
-
-            </androidx.cardview.widget.CardView>
-
             <ProgressBar
                 android:id="@+id/progressBar2"
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:max="100"
                 android:progress="75"
                 android:progressBackgroundTint="@color/Gray_brown"
 
 
-
                 android:progressTint="@color/Bright_yellow"
-                android:scaleY="5" />
+                android:scaleY="5"
+                tools:visibility="visible" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/overviewArea"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:cardBackgroundColor="@color/Deep_brown"
+                app:cardCornerRadius="25dp">
+
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 

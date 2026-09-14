@@ -1,13 +1,13 @@
-package com.example.palworld
+package com.example.beebudgetinglimited
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.beebudgetinglimited.User
 
 class Appdatabase {
-    @Database(entities = [User::class], version = 1)
+    @Database(entities = [User::class], version = 1, exportSchema = false)
+
 //abstract class because it extends RoomDatabase
     abstract class AppDatabase : RoomDatabase() {
         /*

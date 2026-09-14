@@ -65,7 +65,7 @@
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:textColorHint="#757575" />
+                android:textColorHint="#FFFFFF" />
 
             <EditText
                 android:id="@+id/etSPassword"
@@ -80,7 +80,7 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:textColorHint="#757575" />
+                android:textColorHint="#FFFFFF" />
 
             <EditText
                 android:id="@+id/etSConfPassword"
@@ -100,10 +100,11 @@
             <Button
                 android:id="@+id/btnSigned"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:layout_margin="20dp"
-                android:backgroundTint="@color/light_green"
+                android:backgroundTint="@color/Gray_brown"
                 android:text="@string/signed"
+                android:textAlignment="center"
                 android:textColor="#F8B510"
                 android:textStyle="bold" />
 

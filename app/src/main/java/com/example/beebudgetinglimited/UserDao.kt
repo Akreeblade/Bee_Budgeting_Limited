@@ -1,4 +1,4 @@
-package com.example.palworld
+package com.example.beebudgetinglimited
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -1,20 +1,28 @@
-package com.example.palworld
+package com.example.beebudgetinglimited
 
-import com.example.beebudgetinglimited.User
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.beebudgetinglimited.Appdatabase.AppDatabase
+import kotlinx.coroutines.launch
 
-class UserviewModel {
-    private val UserDao = Appdatabase.getDatabase(application).UserDao
+class UserViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun registerUser(user:User)= viewModelScope.Lauch{
-        UserDao.insertUser(user)
+    //instance of userdao from roomdb
+    private val userDao = AppDatabase.getDatabase(application).userDao()
+
+    //registers a new user
+    fun registerUser(user: User) = viewModelScope.launch {
+        userDao.insertUser(user)
     }
 
-    suspend fun  loginUser(username: String, password: String ): User? {
-        return UserDao.login(username,password)
-
+    //checks if user exists
+    suspend fun loginUser(username: String, password: String): User? {
+        return userDao.login(username, password)
     }
 
-    suspend fun isUsernameTaken(username: String): Boolean{
-        return UserDao.getUserByUsername(username) != null
+    //checks if username exists
+    suspend fun isUsernameTaken(username: String): Boolean {
+        return userDao.getUserByUsername(username) != null
     }
 }
