@@ -30,7 +30,7 @@ class Login : AppCompatActivity() {
         //instance of userviewmodel
         viewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
-        findViewById<Button>(R.id.btnSigned).setOnClickListener {
+        findViewById<Button>(R.id.btnLogin).setOnClickListener {
             //takes the users input
             val username =findViewById<EditText>(R.id.etSEmailAddress).text.toString()
             val password = findViewById<EditText>(R.id.etSPassword).text.toString()

@@ -21,5 +21,45 @@ class RegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_sign_up)
+        viewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) {v, insets ->
+          val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+          v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+          insets
+        }
+
+        //making an instance of userviewmodel
+        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
+
+        findViewById<Button>(R.id.btnSigned).setOnClickListener {
+            //gets user input
+            val fullName = findViewById<EditText>(R.id.etFullName).text.toString()
+            val username = findViewById<EditText>(R.id.etUsername).text.toString()
+            val password = findViewById<EditText>(R.id.etPassword).text.toString()
+
+            //checking if user exists
+            lifecycleScope.launch {
+                if (viewModel.isUsernameTaken(username)) {
+                    Toast.makeText(
+                        this@RegistrationActivity,
+                        "Username already taken",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    viewModel.registerUser(
+                        User(
+                            fullName = fullName,
+                            username = username,
+                            password = password
+                        )
+                    )
+                    Toast.makeText(
+                        this@RegistrationActivity,
+                        "Signed up successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
+                }
+            }
+        }
     }
 }

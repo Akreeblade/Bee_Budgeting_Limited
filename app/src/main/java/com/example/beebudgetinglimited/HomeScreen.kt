@@ -4,6 +4,7 @@ import android.content.Intent
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,6 +19,10 @@ class HomeScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val fullName = intent.getStringExtra("fullName")
+        findViewById<TextView>(R.id.tvWelcome).text = "Welcome, $fullName!"
+
         findViewById<Button>(R.id.Barrybtn).setOnClickListener {
             val intent = Intent(this@HomeScreen, HomeScreen::class.java)
             startActivity(intent)
