@@ -25,7 +25,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="494dp"
+            android:layout_height="552dp"
             android:orientation="vertical"
             android:padding="15dp"
             android:paddingTop="40dp"
@@ -51,7 +51,21 @@
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
-
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
+                android:autofillHints="fullname"
+                android:background="#72502D"
+                android:backgroundTint="#72502D"
+                android:ems="10"
+                android:hint="Username"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColorHint="#FFFFFF" />
 
             <EditText
                 android:id="@+id/etSEmailAddress"

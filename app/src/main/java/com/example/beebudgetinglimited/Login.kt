@@ -40,7 +40,7 @@ class Login : AppCompatActivity() {
                 //procedures to follow depending on what result you get
                 if(user != null){
                     val intent = Intent(this@Login, HomeScreen::class.java)
-                    intent.putExtra("FullName",user.fullname)
+                    intent.putExtra("FullName",user.fullName)
                     startActivity(intent)
                     finish()
 

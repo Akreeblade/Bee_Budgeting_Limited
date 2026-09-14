@@ -21,7 +21,7 @@ class HomeScreen : AppCompatActivity() {
         }
 
         val fullName = intent.getStringExtra("fullName")
-        findViewById<TextView>(R.id.tvWelcome).text = "Welcome, $fullName!"
+        //findViewById<TextView>(R.id.tvWelcome).text = "Welcome, $fullName!"
 
         findViewById<Button>(R.id.Barrybtn).setOnClickListener {
             val intent = Intent(this@HomeScreen, HomeScreen::class.java)
