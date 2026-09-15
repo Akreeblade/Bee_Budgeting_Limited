@@ -20,7 +20,7 @@ class BarryCareScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        findViewById<ImageButton>(R.id.Barrybtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Homebtn).setOnClickListener {
             val intent = Intent(this@BarryCareScreen, HomeScreen::class.java)
             startActivity(intent)
             finish()

@@ -25,7 +25,7 @@ class Analytics : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        findViewById<ImageButton>(R.id.Barrybtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Homebtn).setOnClickListener {
             val intent = Intent(this@Analytics, HomeScreen::class.java)
             startActivity(intent)
             finish()

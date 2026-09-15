@@ -60,19 +60,35 @@
                         app:srcCompat="@drawable/cogicon" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvBack"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:textColor="@color/Bright_yellow"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="55dp" />
             </androidx.cardview.widget.CardView>
 
             <!-- Horizontal layout holding your buttons and image -->
 
-            <ScrollView
+            <!-- Replace the old ScrollView with this RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAllTransactions"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-            </ScrollView>
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="170dp"
+                android:clipToPadding="false"
+                tools:listitem="@layout/item_transaction" />
 
         </LinearLayout>
 
