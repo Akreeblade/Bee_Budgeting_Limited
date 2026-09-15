@@ -32,6 +32,14 @@ class SignUp : AppCompatActivity() {
             insets
         }
 
+        //tvRedirectLogin.setOnClickListener {
+        //    val intent = Intent(this, Login::class.java)
+        //    startActivity(intent)
+        //    // using finish() to end the activity
+        //    finish()
+        //}
+
+
         //Creates instance of UserViewsModel
         viewModel = ViewModelProvider(this)[UserViewModel::class.java]
 

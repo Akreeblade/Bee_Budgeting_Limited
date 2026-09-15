@@ -54,8 +54,8 @@ class Login : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnLogin).setOnClickListener {
             //takes the users input
-            val username =findViewById<EditText>(R.id.etSEmailAddress).text.toString()
-            val password = findViewById<EditText>(R.id.etSPassword).text.toString()
+            val username =findViewById<EditText>(R.id.etUsername).text.toString()
+            val password = findViewById<EditText>(R.id.etPassword).text.toString()
             //calls the viewmodel method to check details via a coroutine
             lifecycleScope.launch {
                 val user = viewModel.loginUser(username,password)
