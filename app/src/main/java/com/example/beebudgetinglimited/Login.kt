@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -16,6 +17,14 @@ import kotlinx.coroutines.launch
 class Login : AppCompatActivity() {
 
     private lateinit var viewModel: UserViewModel
+
+    private lateinit var tvRedirectSignUp: TextView
+
+    lateinit var etUsername: EditText
+
+    private lateinit var etPass: EditText
+
+    lateinit var btnLogin: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +39,19 @@ class Login : AppCompatActivity() {
         //instance of userviewmodel
         viewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
+        tvRedirectSignUp = findViewById(R.id.tvRedirectSignUp)
+        btnLogin = findViewById(R.id.btnLogin)
+        etUsername = findViewById(R.id.etUsername)
+        etPass = findViewById(R.id.etPassword)
+
+        //redirects to sign up screen
+        tvRedirectSignUp.setOnClickListener {
+            val intent = Intent(this, SignUp::class.java)
+            startActivity(intent)
+            // using finish() to end the activity
+            finish()
+        }
+
         findViewById<Button>(R.id.btnLogin).setOnClickListener {
             //takes the users input
             val username =findViewById<EditText>(R.id.etSEmailAddress).text.toString()
@@ -42,7 +64,7 @@ class Login : AppCompatActivity() {
                     val intent = Intent(this@Login, HomeScreen::class.java)
                     intent.putExtra("FullName",user.fullName)
                     startActivity(intent)
-                    finish()
+                    //finish()
 
                 } else {
                     Toast.makeText(this@Login, "Invalid credentials", Toast.LENGTH_SHORT).show()

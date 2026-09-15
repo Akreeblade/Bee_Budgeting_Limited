@@ -27,7 +27,9 @@ class Appdatabase {
                         context.applicationContext,
                         AppDatabase::class.java,
                         "user_db"
-                    ).build().also {INSTANCE = it}
+                    )
+                        //.fallbackToDestructiveMigration()
+                        .build().also {INSTANCE = it}
                 }
             }
         }

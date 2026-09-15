@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Cream"
-    tools:context=".MainActivity">
+    tools:context=".Login">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardContainer"
@@ -38,19 +38,20 @@
                 android:layout_marginRight="15dp"
                 android:hint="Username"
                 android:textColorHint="@color/Cream"
-                android:inputType="text" />
+                android:inputType="textPassword" />
 
             <EditText
                 android:id="@+id/etPassword"
-                android:background="@color/Gray_brown"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
+                android:background="@color/Gray_brown"
                 android:hint="Password"
-                android:textColorHint="@color/Cream"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/Cream" />
 
             <Button
                 android:id="@+id/btnLogin"
@@ -64,7 +65,7 @@
                 android:text="Login" />
 
             <TextView
-                android:id="@+id/tvRedirectLogin"
+                android:id="@+id/tvRedirectSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
