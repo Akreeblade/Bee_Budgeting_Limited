@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:backgroundTint="@color/pastel_yellow"
+        android:backgroundTint="@color/Cream"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,34 +54,33 @@
             <EditText
                 android:id="@+id/etUsername"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="15dp"
-                android:autofillHints="fullname"
-                android:background="#72502D"
-                android:backgroundTint="#72502D"
+                android:background="@color/Gray_brown"
+                android:backgroundTint="@color/Gray_brown"
                 android:ems="10"
                 android:hint="Username"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:textColorHint="#FFFFFF" />
+                android:textColorHint="@color/Cream" />
 
             <EditText
                 android:id="@+id/etSEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:autofillHints="fullname"
-                android:background="#72502D"
-                android:backgroundTint="#72502D"
+                android:background="@color/Gray_brown"
+                android:backgroundTint="@color/Gray_brown"
                 android:ems="10"
                 android:hint="fullname"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:textColorHint="#FFFFFF" />
+                android:textColorHint="@color/Cream" />
 
             <EditText
                 android:id="@+id/etSPassword"
@@ -91,12 +90,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:autofillHints="password"
-                android:background="#72502D"
+                android:background="@color/Gray_brown"
+                android:backgroundTint="@color/Gray_brown"
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:textColorHint="#FFFFFF" />
+                android:textColorHint="@color/Cream" />
 
             <EditText
                 android:id="@+id/etSConfPassword"
@@ -106,11 +106,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:autofillHints="password"
+                android:background="@color/Gray_brown"
+                android:backgroundTint="@color/Gray_brown"
                 android:ems="10"
                 android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:textColorHint="#757575"
+                android:textColorHint="@color/Cream"
                 tools:ignore="TextContrastCheck" />
 
             <Button
@@ -119,9 +121,9 @@
                 android:layout_height="52dp"
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/Gray_brown"
-                android:text="@string/signed"
+                android:text="@string/sign_up"
                 android:textAlignment="center"
-                android:textColor="#F8B510"
+                android:textColor="@color/Bright_yellow"
                 android:textStyle="bold" />
 
             <TextView
@@ -130,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/already_have_an_account_login"
-                android:textColor="#F8B510"
+                android:textColor="@color/Bright_yellow"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 

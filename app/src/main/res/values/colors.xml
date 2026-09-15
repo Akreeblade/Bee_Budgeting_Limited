@@ -9,4 +9,9 @@
     <color name="yellow">#F4E0AF</color>
     <color name="pastel_yellow">#F8FAB4</color>
 
+    <color name ="Gray_brown">#725030</color>
+    <color name ="Dark_brown">#4c1e01</color>
+    <color name ="Cream">#f6f2de</color>
+    <color name ="Bright_yellow">#f9c02a</color>
+
 </resources>

@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileScreen">
+    tools:context=".ProfileScreen"
+    android:background="@color/Cream">
 
     <!-- 1. MAIN CONTENT WINDOW -->
     <LinearLayout
@@ -15,13 +16,14 @@
 
         <!-- CardView must wrap something, or use layout_height="0dp" with weights -->
         <androidx.cardview.widget.CardView
+            android:backgroundTint="@color/Cream"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <!-- Horizontal layout holding your buttons and image -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="60dp"
             android:orientation="horizontal">
 
             <TextView
@@ -29,8 +31,9 @@
                 android:layout_width="0dp"
                 android:layout_height="58dp"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="0.2"
                 android:text="@string/backbutton"
+                android:textColor="@color/Bright_yellow"
                 android:textAlignment="center" />
 
             <ImageView
@@ -42,10 +45,12 @@
                 app:srcCompat="@drawable/house" />
 
             <ImageButton
-                android:id="@+id/Settingbtnprf"
+                android:id="@+id/Settingsbtn"
+                android:scaleType="fitCenter"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.2"
+                android:background="@android:color/transparent"
                 app:srcCompat="@drawable/cogicon" />
 
         </LinearLayout>
@@ -61,42 +66,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/username"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/Dark_brown"
+            android:textSize="24dp"/>
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/user_email"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/Dark_brown"
+            android:textSize="18dp"/>
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:text="@string/button" />
+            android:text="@string/edit_profile"
+            android:textSize="18dp"
+            android:textColor="@color/Dark_brown"
+            android:backgroundTint="@color/Bright_yellow"/>
 
         <TextView
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/daily_streak"
-            android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="97dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Button" />
+            android:textAlignment="center"
+            android:textColor="@color/Dark_brown"
+            android:textSize="24dp"/>
 
         <TextView
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/achievements"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/Dark_brown"
+            android:textSize="24dp"/>
 
     </LinearLayout>
 

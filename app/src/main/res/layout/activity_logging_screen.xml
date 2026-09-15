@@ -5,31 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileScreen">
-
-    <!-- 1. MAIN CONTENT WINDOW -->
+    tools:context=".ProfileScreen"
+    android:background="@color/Cream">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <!-- CardView must wrap something, or use layout_height="0dp" with weights -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <!-- Horizontal layout holding your buttons and image -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="60dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/ProfileBtn"
+                app:srcCompat="@drawable/profileicon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button 1" />
+                android:layout_weight="0.2"
+                android:backgroundTint="@color/Bright_yellow"
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -41,9 +39,11 @@
 
             <ImageButton
                 android:id="@+id/Settingsbtn"
+                android:scaleType="fitCenter"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.2"
+                android:background="@android:color/transparent"
                 app:srcCompat="@drawable/cogicon" />
 
         </LinearLayout>
@@ -75,7 +75,7 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="Expense"
                 android:textSize="34sp" />
         </com.google.android.material.chip.ChipGroup>
 

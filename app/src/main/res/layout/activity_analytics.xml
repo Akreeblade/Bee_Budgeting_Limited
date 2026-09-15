@@ -5,10 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Analytics">
+    tools:context=".Analytics"
+    android:background="@color/Cream">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/Cream">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,15 +26,17 @@
             <!-- Horizontal layout holding your buttons and image -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
+                android:layout_height="60dp"
                 android:orientation="horizontal">
 
-                <Button
+                <ImageButton
                     android:id="@+id/ProfileBtn"
+                    app:srcCompat="@drawable/profileicon"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button 1" />
+                    android:layout_weight="0.2"
+                    android:backgroundTint="@color/Bright_yellow"
+                    android:scaleType="centerCrop" />
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -39,42 +44,30 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:alpha="0"
-                    app:srcCompat="@drawable/house" />
+                    app:srcCompat="@drawable/house" /> />
 
                 <ImageButton
                     android:id="@+id/Settingsbtn"
+                    android:scaleType="fitCenter"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/cogicon" />
+                    android:layout_weight="0.2"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/cogicon" /> />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/bottomBar"
             android:layout_width="match_parent"
-            android:layout_height="213dp"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/Addbtn"
-                android:layout_width="77dp"
-                android:layout_height="76dp"
-                android:layout_gravity="center"
-                android:text="+"
-                android:textColorLink="#f2c560"
-                android:textSize="40dp"
-                app:iconSize="50dp"
-                android:background="#f2c560"/>
+            android:layout_height="170dp"
+            android:layout_gravity="bottom">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="138dp"
-                android:layout_gravity="bottom"
+                android:layout_height="match_parent"
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
@@ -83,27 +76,42 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/houseicon"
-                    android:background="#725030"/>
+                    android:background="#725030"
+                    app:srcCompat="@drawable/houseicon" />
 
                 <ImageButton
                     android:id="@+id/Barrybtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/bearicon"
-                    android:background="#725030"/>
+                    android:background="#725030"
+                    app:srcCompat="@drawable/bearicon" />
 
                 <ImageButton
                     android:id="@+id/Analyticsbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/analyticsicon"
-                    android:background="#725030"/>
+                    android:background="#725030"
+                    app:srcCompat="@drawable/analyticsicon" />
 
             </LinearLayout>
-        </LinearLayout>
+
+            <Button
+                android:id="@+id/Addbtn"
+                android:layout_width="73dp"
+                android:layout_height="78dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp"
+
+                android:backgroundTint="@color/Bright_yellow"
+                android:text="+"
+                android:textColor="@color/Dark_brown"
+                android:textColorLink="#f2c560"
+                android:textSize="40dp" />
+
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.drawerlayout.widget.DrawerLayout>

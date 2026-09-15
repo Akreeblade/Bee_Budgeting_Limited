@@ -3,7 +3,7 @@
     <string name="confirm_password">Confirm Password\n</string>
     <string name="signed">Signed\n</string>
     <string name="already_have_an_account_login">Already have an account? Login\n</string>
-    <string name="dont_have_an_account">Need have an account? Sign-up</string>
+    <string name="dont_have_an_account">Need an account? Sign-up</string>
     <string name="backbutton">\nBack</string>
     <string name="account_information">Account information</string>
     <string name="recurring_payments">Recurring payments</string>
@@ -22,14 +22,12 @@
     <string name="barry">Barry</string>
     <string name="plus">+</string>
     <string name="choose_icon">Choose icon</string>
-    <string name="is_this_an_expense_or_income">Is this an expense or income</string>
+    <string name="is_this_an_expense_or_income">Is this an expense or income?</string>
     <string name="password">password</string>
     <string name="email">email</string>
-    <color name ="Gray_brown">#725030</color>
-    <color name ="Dark_brown">#4c1e01</color>
-    <color name ="Deep_brown">#4c1e01</color>
-    <color name ="Cream">#f6f2de</color>
-    <color name ="Bright_yellow">#f9c02a</color>
+    <string name="sign_up">Sign Up</string>
+    <string name="edit_profile">Edit</string>
+
 
 
 </resources>
