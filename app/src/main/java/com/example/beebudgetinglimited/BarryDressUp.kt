@@ -4,9 +4,11 @@ import android.content.Intent
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
 
 class BarryDressUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,32 +20,32 @@ class BarryDressUp : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        findViewById<Button>(R.id.Barrybtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Barrybtn).setOnClickListener {
             val intent = Intent(this@BarryDressUp, HomeScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Barrybtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Barrybtn).setOnClickListener {
             val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.ProfileBtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.ProfileBtn).setOnClickListener {
             val intent = Intent(this@BarryDressUp, ProfileScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Settingsbtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Settingsbtn).setOnClickListener {
             val intent = Intent(this@BarryDressUp, SettingsScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Analyticsbtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Analyticsbtn).setOnClickListener {
             val intent = Intent(this@BarryDressUp, Analytics::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Addbtn).setOnClickListener {
+        findViewById<MaterialButton>(R.id.Addbtn).setOnClickListener {
             val intent = Intent(this@BarryDressUp, LoggingScreen::class.java)
             startActivity(intent)
             finish()

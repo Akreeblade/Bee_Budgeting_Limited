@@ -4,6 +4,7 @@ import android.content.Intent
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,7 +23,7 @@ class ProfileScreen : AppCompatActivity() {
         findViewById<TextView>(R.id.BackText).setOnClickListener {
             finish()
         }
-        findViewById<Button>(R.id.Settingsbtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Settingsbtn).setOnClickListener {
             val intent = Intent(this@ProfileScreen, SettingsScreen::class.java)
             startActivity(intent)
             finish()

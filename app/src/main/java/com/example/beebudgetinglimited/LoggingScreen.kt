@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -23,12 +24,12 @@ class LoggingScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        findViewById<Button>(R.id.ProfileBtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.ProfileBtn).setOnClickListener {
             val intent = Intent(this@LoggingScreen, ProfileScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Settingsbtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Settingsbtn).setOnClickListener {
             val intent = Intent(this@LoggingScreen, SettingsScreen::class.java)
             startActivity(intent)
             finish()

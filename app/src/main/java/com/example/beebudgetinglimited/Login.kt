@@ -52,22 +52,63 @@ class Login : AppCompatActivity() {
             finish()
         }
 
-        findViewById<Button>(R.id.btnLogin).setOnClickListener {
-            //takes the users input
-            val username =findViewById<EditText>(R.id.etUsername).text.toString()
-            val password = findViewById<EditText>(R.id.etPassword).text.toString()
-            //calls the viewmodel method to check details via a coroutine
+        //findViewById<Button>(R.id.btnLogin).setOnClickListener {
+        //    //takes the users input
+        //    val username =findViewById<EditText>(R.id.etUsername).text.toString()
+        //    val password = findViewById<EditText>(R.id.etPassword).text.toString()
+        //    //calls the viewmodel method to check details via a coroutine
+        //    lifecycleScope.launch {
+        //        val user = viewModel.loginUser(username,password)
+        //        //procedures to follow depending on what result you get
+        //        if(user != null){
+        //            val intent = Intent(this@Login, HomeScreen::class.java)
+        //            intent.putExtra("FullName",user.fullName)
+        //            startActivity(intent)
+        //            //finish()
+//
+        //        } else {
+        //            Toast.makeText(this@Login, "Invalid credentials", Toast.LENGTH_SHORT).show()
+        //        }
+        //    }
+        //}
+        btnLogin.setOnClickListener {
+
+            val username = etUsername.text.toString()
+            val password = etPass.text.toString()
+
             lifecycleScope.launch {
-                val user = viewModel.loginUser(username,password)
-                //procedures to follow depending on what result you get
-                if(user != null){
-                    val intent = Intent(this@Login, HomeScreen::class.java)
-                    intent.putExtra("FullName",user.fullName)
-                    startActivity(intent)
-                    //finish()
+
+                val usernameExists = viewModel.isUsernameTaken(username)
+
+                Toast.makeText(
+                    this@Login,
+                    "Username exists: $usernameExists",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                if (usernameExists) {
+
+                    val user = viewModel.loginUser(username, password)
+
+                    if (user != null) {
+                        val intent = Intent(this@Login, HomeScreen::class.java)
+                        intent.putExtra("FullName", user.fullName)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(
+                            this@Login,
+                            "Username exists, but password is wrong",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
 
                 } else {
-                    Toast.makeText(this@Login, "Invalid credentials", Toast.LENGTH_SHORT).show()
+
+                    Toast.makeText(
+                        this@Login,
+                        "Username does not exist: $username",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }

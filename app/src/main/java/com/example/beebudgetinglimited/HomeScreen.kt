@@ -4,10 +4,12 @@ import android.content.Intent
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
 
 class HomeScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,32 +25,32 @@ class HomeScreen : AppCompatActivity() {
         val fullName = intent.getStringExtra("fullName")
         //findViewById<TextView>(R.id.tvWelcome).text = "Welcome, $fullName!"
 
-        findViewById<Button>(R.id.Barrybtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Barrybtn).setOnClickListener {
             val intent = Intent(this@HomeScreen, HomeScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Barrybtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Barrybtn).setOnClickListener {
             val intent = Intent(this@HomeScreen, BarryCareScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.ProfileBtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.ProfileBtn).setOnClickListener {
             val intent = Intent(this@HomeScreen, ProfileScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Settingsbtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Settingsbtn).setOnClickListener {
             val intent = Intent(this@HomeScreen, SettingsScreen::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Analyticsbtn).setOnClickListener {
+        findViewById<ImageButton>(R.id.Analyticsbtn).setOnClickListener {
             val intent = Intent(this@HomeScreen, Analytics::class.java)
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Addbtn).setOnClickListener {
+        findViewById<MaterialButton>(R.id.Addbtn).setOnClickListener {
             val intent = Intent(this@HomeScreen, LoggingScreen::class.java)
             startActivity(intent)
             finish()
