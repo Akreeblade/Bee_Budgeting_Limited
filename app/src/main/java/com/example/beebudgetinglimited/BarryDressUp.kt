@@ -33,7 +33,7 @@ class BarryDressUp : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Settingbtnprf).setOnClickListener {
+        findViewById<Button>(R.id.Settingsbtn).setOnClickListener {
             val intent = Intent(this@BarryDressUp, SettingsScreen::class.java)
             startActivity(intent)
             finish()

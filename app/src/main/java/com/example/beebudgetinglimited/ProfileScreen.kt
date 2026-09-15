@@ -22,7 +22,7 @@ class ProfileScreen : AppCompatActivity() {
         findViewById<TextView>(R.id.BackText).setOnClickListener {
             finish()
         }
-        findViewById<Button>(R.id.Settingbtnprf).setOnClickListener {
+        findViewById<Button>(R.id.Settingsbtn).setOnClickListener {
             val intent = Intent(this@ProfileScreen, SettingsScreen::class.java)
             startActivity(intent)
             finish()

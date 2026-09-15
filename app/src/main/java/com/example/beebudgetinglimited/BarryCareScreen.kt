@@ -33,7 +33,7 @@ class BarryCareScreen : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        findViewById<Button>(R.id.Settingbtnprf).setOnClickListener {
+        findViewById<Button>(R.id.Settingsbtn).setOnClickListener {
             val intent = Intent(this@BarryCareScreen, SettingsScreen::class.java)
             startActivity(intent)
             finish()
