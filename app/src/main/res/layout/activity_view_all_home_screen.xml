@@ -5,26 +5,24 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:rotation="0"
-    android:rotationX="0"
-    android:rotationY="0"
-    tools:context=".HomeScreen"
+    tools:context=".ViewAllHomeScreen"
     android:background="@color/Cream">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/Cream">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@color/Cream">
 
-            <!-- CardView must wrap something, or use layout_height="0dp" with weights -->
+            <!-- Top Header Bar -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/topBar"
@@ -59,7 +57,6 @@
                         android:background="@android:color/transparent"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/cogicon" />
-
                 </LinearLayout>
 
                 <TextView
@@ -77,29 +74,117 @@
                     android:layout_marginTop="55dp" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Horizontal layout holding your buttons and image -->
+            <!-- Date Filter Layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/Gray_brown"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp">
 
-            <!-- Replace the old ScrollView with this RecyclerView -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/Gray_brown"
+                    android:backgroundTint="@color/Gray_brown"
+                    android:textColorHint="@color/Cream"
+                    app:boxBackgroundColor="@color/Gray_brown"
+                    app:boxBackgroundMode="filled">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etStartDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/Gray_brown"
+                        android:backgroundTint="@color/Gray_brown"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Start Date"
+                        android:textColor="@color/Cream"
+                        android:textColorHint="@color/Cream"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/Gray_brown"
+                    android:backgroundTint="@color/Gray_brown"
+                    android:textColorHint="@color/Cream"
+                    app:boxBackgroundColor="@color/Gray_brown"
+                    app:boxBackgroundMode="filled">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEndDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/Gray_brown"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="End Date"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="8dp">
+
+                <Button
+                    android:id="@+id/btnFilter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="@color/Bright_yellow"
+                    android:text="Filter"
+                    android:textColor="@color/Dark_brown" />
+
+                <Button
+                    android:id="@+id/btnClearFilter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Dark_brown"
+                    android:text="Clear"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+            <!-- Group By Category Option -->
+            <CheckBox
+                android:id="@+id/cbGroupByCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="4dp"
+                android:text="Group by Category (Total Amounts)"
+                android:textColor="@color/Dark_brown"
+                android:textStyle="bold" />
+
+            <!-- All Transactions RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAllTransactions"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginBottom="170dp"
                 android:clipToPadding="false"
                 tools:listitem="@layout/item_transaction" />
-
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="519dp"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
+        <!-- Bottom Navigation Bar -->
         <RelativeLayout
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
@@ -136,7 +221,6 @@
                     android:layout_weight="1"
                     android:background="#725030"
                     app:srcCompat="@drawable/analyticsicon" />
-
             </LinearLayout>
 
             <Button
@@ -145,14 +229,10 @@
                 android:layout_height="78dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="0dp"
-
                 android:backgroundTint="@color/Bright_yellow"
                 android:text="+"
                 android:textColor="@color/Dark_brown"
-                android:textColorLink="#f2c560"
                 android:textSize="40dp" />
-
         </RelativeLayout>
-
     </androidx.cardview.widget.CardView>
 </androidx.drawerlayout.widget.DrawerLayout>

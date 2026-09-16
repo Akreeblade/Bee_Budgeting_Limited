@@ -16,11 +16,15 @@ data class CategoryItem(
 class CategoryScreen : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
+    private var isIncomeOnly: Boolean = true
     private var categoryList: List<CategoryItem> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_screen)
+
+        // Read intent flag passed from LoggingScreen (defaults to true if null)
+        isIncomeOnly = intent.getBooleanExtra("IS_INCOME", true)
 
         recyclerView = findViewById(R.id.rvCategories)
 
@@ -30,17 +34,26 @@ class CategoryScreen : AppCompatActivity() {
         }
     }
 
-
     override fun onResume() {
         super.onResume()
-        // Reload categories every time the screen becomes active
         setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
-        categoryList = CategoryRepository.getFormattedCategoryItems()
+        // Retrieve and filter categories matching selection mode
+        val filteredCategories = CategoryRepository.getAllCategories()
+            .filter { it.isIncome == isIncomeOnly }
 
-        val gridLayoutManager = GridLayoutManager(this, 3)
+        val headerText = if (isIncomeOnly) "Income Categories" else "Expense Categories"
+
+        // Store list in class variable so SpanSizeLookup can access it
+        categoryList = mutableListOf<CategoryItem>().apply {
+            add(CategoryItem(name = "Header", isHeader = true, headerTitle = headerText))
+            addAll(filteredCategories.map { CategoryItem(name = it.name) })
+        }
+
+        // Use this@CategoryScreen to fix the context mismatch error
+        val gridLayoutManager = GridLayoutManager(this@CategoryScreen, 3)
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return if (categoryList[position].isHeader) 3 else 1

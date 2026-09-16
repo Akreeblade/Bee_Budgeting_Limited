@@ -51,5 +51,5 @@ dependencies {
     implementation("androidx.room:room-ktx:2.8.4")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
