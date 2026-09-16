@@ -44,3 +44,6 @@ On the analytics screen, you can choose to see a pie chart of the selected month
 Aidan Govender ST10438820 - UI, backend, databases, navigation, debugging, log in, sign up.
 Ceili Rain Abrahams ST10438681 - UI, Pie chart, date filters, category totals, databases, photo saving, category totals.
 Louise Lee ST10438795 - UI, logging entries, category selection, min/max budget goals, view all list of entries.
+
+
+youtube link for video presentation: https://www.youtube.com/watch?v=rxKZmPEU0Lo
