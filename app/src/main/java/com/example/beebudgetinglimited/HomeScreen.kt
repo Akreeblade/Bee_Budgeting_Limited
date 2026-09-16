@@ -1,5 +1,6 @@
 package com.example.beebudgetinglimited
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
@@ -11,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.progressindicator.LinearProgressIndicator
 
 class HomeScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,54 +26,109 @@ class HomeScreen : AppCompatActivity() {
             insets
         }
 
-        val fullName = intent.getStringExtra("fullName")
-        //findViewById<TextView>(R.id.tvWelcome).text = "Welcome, $fullName!"
-
         // "View all" click listener
         findViewById<TextView>(R.id.tvViewAll).setOnClickListener {
             val intent = Intent(this@HomeScreen, ViewAllHomeScreen::class.java)
             startActivity(intent)
         }
 
-        // Bottom Navigation Bar setup (CORRECTLY OUTSIDE THE VIEW ALL LISTENER)
+        // Make Monthly Budget section clickable to open Edit Budget Screen
+        findViewById<com.google.android.material.progressindicator.LinearProgressIndicator>(R.id.progressBarBudget).setOnClickListener {
+            startActivity(Intent(this, EditBudgetScreen::class.java))
+        }
+        findViewById<TextView>(R.id.tvBudgetTitle).setOnClickListener {
+            startActivity(Intent(this, EditBudgetScreen::class.java))
+        }
+        findViewById<TextView>(R.id.tvBudgetAmounts).setOnClickListener {
+            startActivity(Intent(this, EditBudgetScreen::class.java))
+        }
+
+        // Bottom Navigation Bar setup
         findViewById<ImageButton>(R.id.Homebtn).setOnClickListener {
-            val intent = Intent(this@HomeScreen, HomeScreen::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, HomeScreen::class.java))
             finish()
         }
         findViewById<ImageButton>(R.id.Barrybtn).setOnClickListener {
-            val intent = Intent(this@HomeScreen, BarryCareScreen::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, BarryCareScreen::class.java))
             finish()
         }
         findViewById<ImageButton>(R.id.ProfileBtn).setOnClickListener {
-            val intent = Intent(this@HomeScreen, ProfileScreen::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ProfileScreen::class.java))
             finish()
         }
         findViewById<ImageButton>(R.id.Settingsbtn).setOnClickListener {
-            val intent = Intent(this@HomeScreen, SettingsScreen::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, SettingsScreen::class.java))
             finish()
         }
         findViewById<ImageButton>(R.id.Analyticsbtn).setOnClickListener {
-            val intent = Intent(this@HomeScreen, Analytics::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Analytics::class.java))
             finish()
         }
         findViewById<MaterialButton>(R.id.Addbtn).setOnClickListener {
-            val intent = Intent(this@HomeScreen, LoggingScreen::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, LoggingScreen::class.java))
             finish()
         }
-    } // <-- onCreate ends here!
+    }
 
     override fun onResume() {
         super.onResume()
-        // Pulls from repository and restricts to top 3 for the home preview
+
+        // 1. Load recent transaction preview (top 3)
         val recyclerView = findViewById<RecyclerView>(R.id.rvTransactionHistory)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val recentTransactions = TransactionRepository.getTransactions().take(3)
+        val allTransactions = TransactionRepository.getTransactions()
+        val recentTransactions = allTransactions.take(3)
         recyclerView.adapter = TransactionAdapter(recentTransactions)
+
+        // 2. Calculate dynamic totals for Income, Expenses, and Balance
+        var totalIncome = 0
+        var totalExpenses = 0
+
+        for (item in allTransactions) {
+            val numericValue = item.amount.replace(Regex("[^0-9]"), "").toIntOrNull() ?: 0
+            if (item.isIncome) {
+                totalIncome += numericValue
+            } else {
+                totalExpenses += numericValue
+            }
+        }
+
+        val balance = totalIncome - totalExpenses
+
+        // 3. Update Overview Card TextViews
+        findViewById<TextView>(R.id.tvIncomeTotal).text = "R$totalIncome"
+        findViewById<TextView>(R.id.tvExpensesTotal).text = "R$totalExpenses"
+        findViewById<TextView>(R.id.tvBalanceTotal).text = "R$balance"
+
+        // 4. Load Custom Min and Max Budgets from SharedPreferences
+        val prefs = getSharedPreferences("BudgetPrefs", Context.MODE_PRIVATE)
+        val minBudget = prefs.getInt("minBudget", 1000)
+        val maxBudget = prefs.getInt("maxBudget", 1500)
+
+        // Update Text to show Expenses vs Max Limit (or Min/Max details)
+        findViewById<TextView>(R.id.tvBudgetAmounts).text = "R$totalExpenses / R$maxBudget"
+
+        // Calculate progress relative to the maximum budget cap
+        val progressPercent = if (maxBudget > 0) {
+            ((totalExpenses.toFloat() / maxBudget) * 100).toInt().coerceIn(0, 100)
+        } else {
+            0
+        }
+
+        val progressBar = findViewById<LinearProgressIndicator>(R.id.progressBarBudget)
+        progressBar.progress = progressPercent
+
+        // Change progress bar color based on whether expenses passed the minimum target or max limit
+        when {
+            totalExpenses > maxBudget -> {
+                progressBar.setIndicatorColor(android.graphics.Color.parseColor("#FF3B30")) // Red for over max
+            }
+            totalExpenses >= minBudget -> {
+                progressBar.setIndicatorColor(android.graphics.Color.parseColor("#FF9638")) // Orange for hitting min goal zone
+            }
+            else -> {
+                progressBar.setIndicatorColor(android.graphics.Color.parseColor("#FFB817")) // Yellow for safe zone below min
+            }
+        }
     }
 }
