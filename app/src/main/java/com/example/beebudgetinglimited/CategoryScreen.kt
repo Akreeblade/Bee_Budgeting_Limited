@@ -60,7 +60,9 @@ class CategoryScreen : AppCompatActivity() {
         }
 
         findViewById<TextView>(R.id.tvCreateNewCategory).setOnClickListener {
-            // TODO: Open Create Category screen later
+            val intent = Intent(this@CategoryScreen, AddCategoryScreen::class.java)
+            startActivity(intent)
+            finish()
 
         }
     }
