@@ -30,6 +30,7 @@ class CategoryScreen : AppCompatActivity() {
         }
     }
 
+
     override fun onResume() {
         super.onResume()
         // Reload categories every time the screen becomes active
