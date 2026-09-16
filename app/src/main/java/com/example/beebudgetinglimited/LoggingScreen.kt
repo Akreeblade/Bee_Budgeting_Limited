@@ -12,8 +12,23 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.net.Uri
+import androidx.core.content.FileProvider
+import java.io.File
 
 class LoggingScreen : AppCompatActivity() {
+    private var photoUri: Uri? = null
+
+    private val cameraLauncher = registerForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ) { success ->
+        if (success) {
+            Toast.makeText(this, "Photo saved!", Toast.LENGTH_SHORT).show()
+        } else {
+            photoUri = null
+            Toast.makeText(this, "Photo cancelled", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private var isIncomeSelected: Boolean = true
     private lateinit var etCategory: EditText
@@ -76,9 +91,11 @@ class LoggingScreen : AppCompatActivity() {
 
         // Optional Camera Button -> Opens Device Camera
         val btnCamera = findViewById<ImageButton>(R.id.btnCamera)
+
         btnCamera?.setOnClickListener {
-            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivity(cameraIntent)
+            val uri = createPhotoUri()
+            photoUri = uri
+            cameraLauncher.launch(uri)
         }
 
         // Save Button -> Validates and saves transaction
@@ -125,7 +142,8 @@ class LoggingScreen : AppCompatActivity() {
             amount = formattedAmount,
             note = if (notesStr.isEmpty()) null else notesStr,
             date = "12 August 2026",
-            isIncome = isIncomeSelected
+            isIncome = isIncomeSelected,
+            photoUri = photoUri?.toString()
         )
 
         // Save it to the repository
@@ -137,5 +155,19 @@ class LoggingScreen : AppCompatActivity() {
         val intent = Intent(this, HomeScreen::class.java)
         startActivity(intent)
         finish()
+    }
+
+    private fun createPhotoUri(): Uri {
+        val photoFile = File.createTempFile(
+            "transaction_photo_",
+            ".jpg",
+            cacheDir
+        )
+
+        return FileProvider.getUriForFile(
+            this,
+            "${applicationContext.packageName}.fileprovider",
+            photoFile
+        )
     }
 }

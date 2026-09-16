@@ -3,8 +3,10 @@ package com.example.beebudgetinglimited
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import android.net.Uri
 
 class TransactionAdapter(private val transactionList: List<TransactionItem>) :
     RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
@@ -13,6 +15,8 @@ class TransactionAdapter(private val transactionList: List<TransactionItem>) :
         val tvTitle: TextView = itemView.findViewById(R.id.tvCategoryTitle)
         val tvNote: TextView = itemView.findViewById(R.id.tvTransactionNote)
         val tvAmount: TextView = itemView.findViewById(R.id.tvTransactionAmount)
+
+        val ivPhoto: ImageView = itemView.findViewById(R.id.ivTransactionPhoto)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
@@ -32,6 +36,14 @@ class TransactionAdapter(private val transactionList: List<TransactionItem>) :
             holder.tvNote.visibility = View.VISIBLE
         } else {
             holder.tvNote.visibility = View.GONE
+        }
+
+        //handles images
+        if (!item.photoUri.isNullOrEmpty()) {
+            holder.ivPhoto.visibility = View.VISIBLE
+            holder.ivPhoto.setImageURI(Uri.parse(item.photoUri))
+        } else {
+            holder.ivPhoto.visibility = View.GONE
         }
     }
 
