@@ -22,6 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="58dp"
+            android:layout_marginVertical="15dp"
             android:background="#72502D"
             android:foregroundTint="#E91212"
             android:orientation="horizontal">
@@ -33,9 +34,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/backbutton"
-                android:textSize="18dp"
                 android:textAlignment="center"
-                android:textColor="#FDBB14" />
+                android:textColor="#FDBB14"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -43,9 +44,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/nsettings"
-                android:textSize="18dp"
                 android:textAlignment="center"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="18dp" />
 
             <ImageView
                 android:id="@+id/imageView3"
