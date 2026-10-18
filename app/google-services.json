@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "504504121849",
+    "project_id": "beebudgetingltd",
+    "storage_bucket": "beebudgetingltd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504504121849:android:c9bd9bb88c6bd114fe2528",
+        "android_client_info": {
+          "package_name": "com.example.beebudgetinglimited"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiFUfn_HCvfZLob6fmyMZRVcMLyoneMQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

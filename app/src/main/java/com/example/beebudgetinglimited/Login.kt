@@ -14,6 +14,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
+import android.util.Log
+import com.google.firebase.firestore.FirebaseFirestore
+
 class Login : AppCompatActivity() {
 
     private lateinit var viewModel: UserViewModel
@@ -35,6 +38,26 @@ class Login : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        //testing firebase
+        val db = FirebaseFirestore.getInstance()
+
+        // 1. Test Writing a dummy transaction item
+        val testTransaction = hashMapOf(
+            "title" to "Test Coffee",
+            "amount" to 4.50,
+            "type" to "expense",
+            "timestamp" to System.currentTimeMillis()
+        )
+
+        db.collection("test_budget")
+            .add(testTransaction)
+            .addOnSuccessListener { documentReference ->
+                Log.d("FirestoreTest", "Success! Document ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w("FirestoreTest", "Error writing document", e)
+            }
 
         //instance of userviewmodel
         viewModel = ViewModelProvider(this)[UserViewModel::class.java]
