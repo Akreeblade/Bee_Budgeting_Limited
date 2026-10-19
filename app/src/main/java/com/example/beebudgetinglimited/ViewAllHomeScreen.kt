@@ -165,18 +165,18 @@ class ViewAllHomeScreen : AppCompatActivity() {
             val groupedMap = mutableMapOf<String, Pair<Double, Boolean>>()
 
             for (item in baseList) {
-                val cleanAmt = item.amount.replace("R", "").replace("-", "").trim().toDoubleOrNull() ?: 0.0
+                val cleanAmt = kotlin.math.abs(item.amount)
                 val existing = groupedMap[item.title]
                 val newTotal = (existing?.first ?: 0.0) + cleanAmt
                 groupedMap[item.title] = Pair(newTotal, item.isIncome)
             }
 
             groupedMap.map { (category, pair) ->
-                val prefix = if (pair.second) "R" else "-R"
+                val finalAmountValue = if (pair.second) pair.first else -pair.first
                 TransactionItem(
                     title = category,
                     date = "Category Total",
-                    amount = String.format(Locale.ENGLISH, "%s%.2f", prefix, pair.first),
+                    amount = finalAmountValue,
                     isIncome = pair.second,
                     note = "Total sum for selected period"
                 )

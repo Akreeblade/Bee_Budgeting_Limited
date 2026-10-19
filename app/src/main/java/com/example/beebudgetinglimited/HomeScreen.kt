@@ -85,7 +85,7 @@ class HomeScreen : AppCompatActivity() {
         var totalExpenses = 0
 
         for (item in allTransactions) {
-            val numericValue = item.amount.replace(Regex("[^0-9]"), "").toIntOrNull() ?: 0
+            val numericValue = kotlin.math.abs(item.amount).toInt()
             if (item.isIncome) {
                 totalIncome += numericValue
             } else {

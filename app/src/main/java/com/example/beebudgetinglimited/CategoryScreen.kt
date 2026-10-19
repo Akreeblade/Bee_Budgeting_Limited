@@ -3,9 +3,11 @@ package com.example.beebudgetinglimited
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 
 data class CategoryItem(
     val name: String,
@@ -40,7 +42,68 @@ class CategoryScreen : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        // Retrieve and filter categories matching selection mode
+        val db = FirebaseFirestore.getInstance()
+
+        // Fetch categories from Firestore collection
+        db.collection("categories")
+            .get()
+            .addOnSuccessListener { result ->
+                val loadedCategories = mutableListOf<Category>()
+
+                // 1. Add your standard defaults first if you want them always available
+                loadedCategories.add(Category("Dining out", isIncome = false))
+                loadedCategories.add(Category("Gifts", isIncome = false))
+                loadedCategories.add(Category("Groceries", isIncome = false))
+                loadedCategories.add(Category("Entertainment", isIncome = false))
+                loadedCategories.add(Category("Shopping", isIncome = false))
+                loadedCategories.add(Category("Transport", isIncome = false))
+                loadedCategories.add(Category("Bills", isIncome = false))
+                loadedCategories.add(Category("Salary", isIncome = true))
+                loadedCategories.add(Category("Freelance", isIncome = true))
+                loadedCategories.add(Category("Investments", isIncome = true))
+
+                // 2. Append any custom categories pulled from Firestore
+                for (document in result) {
+                    val name = document.getString("name") ?: continue
+                    val isIncome = document.getBoolean("isIncome") ?: false
+                    val customCat = Category(name = name, isIncome = isIncome)
+
+                    // Avoid duplicating if default names match
+                    if (!loadedCategories.any { it.name.equals(name, ignoreCase = true) }) {
+                        loadedCategories.add(customCat)
+                    }
+                }
+
+                // 3. Filter based on selection mode (Income vs Expense)
+                val filteredCategories = loadedCategories.filter { it.isIncome == isIncomeOnly }
+                val headerText = if (isIncomeOnly) "Income Categories" else "Expense Categories"
+
+                categoryList = mutableListOf<CategoryItem>().apply {
+                    add(CategoryItem(name = "Header", isHeader = true, headerTitle = headerText))
+                    addAll(filteredCategories.map { CategoryItem(name = it.name) })
+                }
+
+                val gridLayoutManager = GridLayoutManager(this@CategoryScreen, 3)
+                gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return if (categoryList[position].isHeader) 3 else 1
+                    }
+                }
+
+                recyclerView.layoutManager = gridLayoutManager
+                recyclerView.adapter = CategoryAdapter(categoryList) { selectedCategory ->
+                    val resultIntent = Intent().apply {
+                        putExtra("SELECTED_CATEGORY", selectedCategory)
+                    }
+                    setResult(RESULT_OK, resultIntent)
+                    finish()
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed to load categories", Toast.LENGTH_SHORT).show()
+            }
+
+        /*// Retrieve and filter categories matching selection mode
         val filteredCategories = CategoryRepository.getAllCategories()
             .filter { it.isIncome == isIncomeOnly }
 
@@ -67,6 +130,6 @@ class CategoryScreen : AppCompatActivity() {
             }
             setResult(RESULT_OK, resultIntent)
             finish()
-        }
+        }*/
     }
 }

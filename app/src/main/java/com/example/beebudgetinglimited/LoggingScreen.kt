@@ -179,6 +179,8 @@ class LoggingScreen : AppCompatActivity() {
             return
         }
 
+        val finalAmount = if (isIncomeSelected) amountValue else -amountValue
+
         // Format amount string
         val formattedAmount = if (isIncomeSelected) {
             "R${amountValue.toInt()}"
@@ -189,14 +191,30 @@ class LoggingScreen : AppCompatActivity() {
         // Create transaction object
         val newTransaction = TransactionItem(
             title = categoryStr,
-            amount = formattedAmount,
+            amount = finalAmount,
             note = if (notesStr.isEmpty()) null else notesStr,
             date = dateStr,
             isIncome = isIncomeSelected,
             photoUri = photoUri?.toString()
         )
 
-        // Save to repository
+
+        // Instantiate TransactionViewModel and save
+        val viewModel = androidx.lifecycle.ViewModelProvider(this)[TransactionViewModel::class.java]
+        viewModel.addTransaction(
+            newTransaction,
+            onSuccess = {
+                Toast.makeText(this, "Transaction Saved Successfully!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeScreen::class.java)
+                startActivity(intent)
+                finish()
+            },
+            onError = { e ->
+                Toast.makeText(this, "Failed to save: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        /*// Save to repository
         TransactionRepository.addTransaction(newTransaction)
 
         Toast.makeText(this, "Transaction Saved Successfully!", Toast.LENGTH_SHORT).show()
@@ -204,7 +222,7 @@ class LoggingScreen : AppCompatActivity() {
         // Return to Home Screen
         val intent = Intent(this, HomeScreen::class.java)
         startActivity(intent)
-        finish()
+        finish()*/
     }
 
     private fun createPhotoUri(): Uri {

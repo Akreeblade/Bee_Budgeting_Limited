@@ -28,7 +28,7 @@ class TransactionAdapter(private val transactionList: List<TransactionItem>) :
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val item = transactionList[position]
         holder.tvTitle.text = item.title
-        holder.tvAmount.text = item.amount
+        holder.tvAmount.text = item.amount.toString()
 
         // Handle optional notes
         if (!item.note.isNullOrEmpty()) {

@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.chip.Chip
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AddCategoryScreen : AppCompatActivity() {
 
@@ -51,12 +52,31 @@ class AddCategoryScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Save to repository
+            val db = FirebaseFirestore.getInstance()
+
+            // Create category map or data object
+            val categoryData = hashMapOf(
+                "name" to name,
+                "isIncome" to isIncomeSelected
+            )
+
+            // Save to Firestore "categories" collection
+            db.collection("categories")
+                .add(categoryData)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Category saved successfully", Toast.LENGTH_SHORT).show()
+                    finish() // Closes screen and returns to CategoryScreen
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(this, "Failed to save category: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                }
+
+            /*// Save to repository
             val newCategory = Category(name = name, isIncome = isIncomeSelected)
             CategoryRepository.addCategory(newCategory)
 
             Toast.makeText(this, "Category saved successfully", Toast.LENGTH_SHORT).show()
-            finish() // Closes screen and updates CategoryScreen
+            finish() // Closes screen and updates CategoryScreen*/
         }
 
         // Navigation

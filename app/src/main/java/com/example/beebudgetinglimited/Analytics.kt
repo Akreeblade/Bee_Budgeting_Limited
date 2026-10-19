@@ -160,7 +160,7 @@ class Analytics : AppCompatActivity() {
         var grandTotal = 0.0
 
         for (item in matchingTransactions) {
-            val cleanAmount = item.amount.replace("R", "").replace("-", "").trim().toDoubleOrNull() ?: 0.0
+            val cleanAmount = kotlin.math.abs(item.amount)
             categoryTotals[item.title] = (categoryTotals[item.title] ?: 0.0) + cleanAmount
             grandTotal += cleanAmount
         }
