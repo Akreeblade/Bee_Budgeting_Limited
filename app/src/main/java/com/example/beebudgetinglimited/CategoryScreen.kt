@@ -43,38 +43,42 @@ class CategoryScreen : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         val db = FirebaseFirestore.getInstance()
+        val categoriesRef = db.collection("categories")
 
-        // Fetch categories from Firestore collection
-        db.collection("categories")
-            .get()
+        // 1. Fetch categories live from Firestore
+        categoriesRef.get()
             .addOnSuccessListener { result ->
                 val loadedCategories = mutableListOf<Category>()
 
-                // 1. Add your standard defaults first if you want them always available
-                loadedCategories.add(Category("Dining out", isIncome = false))
-                loadedCategories.add(Category("Gifts", isIncome = false))
-                loadedCategories.add(Category("Groceries", isIncome = false))
-                loadedCategories.add(Category("Entertainment", isIncome = false))
-                loadedCategories.add(Category("Shopping", isIncome = false))
-                loadedCategories.add(Category("Transport", isIncome = false))
-                loadedCategories.add(Category("Bills", isIncome = false))
-                loadedCategories.add(Category("Salary", isIncome = true))
-                loadedCategories.add(Category("Freelance", isIncome = true))
-                loadedCategories.add(Category("Investments", isIncome = true))
-
-                // 2. Append any custom categories pulled from Firestore
-                for (document in result) {
-                    val name = document.getString("name") ?: continue
-                    val isIncome = document.getBoolean("isIncome") ?: false
-                    val customCat = Category(name = name, isIncome = isIncome)
-
-                    // Avoid duplicating if default names match
-                    if (!loadedCategories.any { it.name.equals(name, ignoreCase = true) }) {
-                        loadedCategories.add(customCat)
+                // If the Firestore "categories" collection is completely empty,
+                // let's seed your default presets automatically so the app isn't blank!
+                if (result.isEmpty) {
+                    val defaultPresets = listOf(
+                        Category("Dining out", isIncome = false),
+                        Category("Gifts", isIncome = false),
+                        Category("Groceries", isIncome = false),
+                        Category("Entertainment", isIncome = false),
+                        Category("Shopping", isIncome = false),
+                        Category("Transport", isIncome = false),
+                        Category("Bills", isIncome = false),
+                        Category("Salary", isIncome = true),
+                        Category("Freelance", isIncome = true),
+                        Category("Investments", isIncome = true)
+                    )
+                    for (preset in defaultPresets) {
+                        categoriesRef.add(preset)
+                        loadedCategories.add(preset)
+                    }
+                } else {
+                    // Pull whatever is in Firestore (defaults + any custom ones added by users)
+                    for (document in result) {
+                        val name = document.getString("name") ?: continue
+                        val isIncome = document.getBoolean("isIncome") ?: false
+                        loadedCategories.add(Category(name = name, isIncome = isIncome))
                     }
                 }
 
-                // 3. Filter based on selection mode (Income vs Expense)
+                // 2. Filter based on whether user is logging Income or Expense
                 val filteredCategories = loadedCategories.filter { it.isIncome == isIncomeOnly }
                 val headerText = if (isIncomeOnly) "Income Categories" else "Expense Categories"
 
@@ -83,6 +87,7 @@ class CategoryScreen : AppCompatActivity() {
                     addAll(filteredCategories.map { CategoryItem(name = it.name) })
                 }
 
+                // 3. Render Grid Layout
                 val gridLayoutManager = GridLayoutManager(this@CategoryScreen, 3)
                 gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
@@ -100,8 +105,9 @@ class CategoryScreen : AppCompatActivity() {
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(this, "Failed to load categories", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to load categories from database", Toast.LENGTH_SHORT).show()
             }
+    }
 
         /*// Retrieve and filter categories matching selection mode
         val filteredCategories = CategoryRepository.getAllCategories()
@@ -131,5 +137,5 @@ class CategoryScreen : AppCompatActivity() {
             setResult(RESULT_OK, resultIntent)
             finish()
         }*/
-    }
+
 }

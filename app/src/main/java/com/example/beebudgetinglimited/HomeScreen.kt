@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class HomeScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,9 +75,64 @@ class HomeScreen : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+        val recyclerView = findViewById<RecyclerView>(R.id.rvTransactionHistory)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Fetch transactions from Firestore asynchronously
+        lifecycleScope.launch {
+            TransactionRepository.fetchTransactionsFromFirestore()
+            val allTransactions = TransactionRepository.getTransactions()
+            val recentTransactions = allTransactions.take(3)
+            recyclerView.adapter = TransactionAdapter(recentTransactions)
+
+            // Calculate dynamic totals for Income, Expenses, and Balance
+            var totalIncome = 0
+            var totalExpenses = 0
+
+            for (item in allTransactions) {
+                val numericValue = kotlin.math.abs(item.amount).toInt()
+                if (item.isIncome) {
+                    totalIncome += numericValue
+                } else {
+                    totalExpenses += numericValue
+                }
+            }
+
+            val balance = totalIncome - totalExpenses
+
+            findViewById<TextView>(R.id.tvIncomeTotal).text = "R$totalIncome"
+            findViewById<TextView>(R.id.tvExpensesTotal).text = "R$totalExpenses"
+            findViewById<TextView>(R.id.tvBalanceTotal).text = "R$balance"
+
+            val prefs = getSharedPreferences("BudgetPrefs", Context.MODE_PRIVATE)
+            val minBudget = prefs.getInt("minBudget", 1000)
+            val maxBudget = prefs.getInt("maxBudget", 1500)
+
+            findViewById<TextView>(R.id.tvBudgetAmounts).text = "R$totalExpenses / R$maxBudget"
+
+            val progressPercent = if (maxBudget > 0) {
+                ((totalExpenses.toFloat() / maxBudget) * 100).toInt().coerceIn(0, 100)
+            } else {
+                0
+            }
+
+            val progressBar = findViewById<LinearProgressIndicator>(R.id.progressBarBudget)
+            progressBar.progress = progressPercent
+
+            when {
+                totalExpenses > maxBudget -> progressBar.setIndicatorColor(android.graphics.Color.parseColor("#FF3B30"))
+                totalExpenses >= minBudget -> progressBar.setIndicatorColor(android.graphics.Color.parseColor("#FF9638"))
+                else -> progressBar.setIndicatorColor(android.graphics.Color.parseColor("#FFB817"))
+            }
+        }
+
+
+        /*super.onResume()
+
         // 1. Load recent transaction preview (top 3)
         val recyclerView = findViewById<RecyclerView>(R.id.rvTransactionHistory)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
         val allTransactions = TransactionRepository.getTransactions()
         val recentTransactions = allTransactions.take(3)
         recyclerView.adapter = TransactionAdapter(recentTransactions)
@@ -129,6 +186,6 @@ class HomeScreen : AppCompatActivity() {
             else -> {
                 progressBar.setIndicatorColor(android.graphics.Color.parseColor("#FFB817")) // Yellow for safe zone below min
             }
-        }
+        }*/
     }
 }
