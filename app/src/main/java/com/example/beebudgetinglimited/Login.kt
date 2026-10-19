@@ -39,8 +39,8 @@ class Login : AppCompatActivity() {
             insets
         }
 
-        //testing firebase
-        val db = FirebaseFirestore.getInstance()
+        //testing firebase - test worked
+        /*val db = FirebaseFirestore.getInstance()
 
         // 1. Test Writing a dummy transaction item
         val testTransaction = hashMapOf(
@@ -57,7 +57,7 @@ class Login : AppCompatActivity() {
             }
             .addOnFailureListener { e ->
                 Log.w("FirestoreTest", "Error writing document", e)
-            }
+            }*/
 
         //instance of userviewmodel
         viewModel = ViewModelProvider(this)[UserViewModel::class.java]
