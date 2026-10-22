@@ -51,5 +51,81 @@ class BarryDressUp : AppCompatActivity() {
             finish()
         }
 
+        // outfit changing
+        findViewById<ImageButton>(R.id.Outfit1).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.bearicon) // Replace with your actual drawable name
+            }
+            startActivity(intent)
+            finish()
+        }
+        findViewById<ImageButton>(R.id.Outfit2).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.house)
+            }
+            startActivity(intent)
+            finish()
+        }
+        findViewById<ImageButton>(R.id.Outfit3).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.house)
+            }
+            startActivity(intent)
+            finish()
+        }
+        findViewById<ImageButton>(R.id.Outfit4).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.house)
+            }
+            startActivity(intent)
+            finish()
+        }
+        findViewById<ImageButton>(R.id.Outfit5).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.house)
+            }
+            startActivity(intent)
+            finish()
+        }
+        findViewById<ImageButton>(R.id.Outfit6).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.house)
+            }
+            startActivity(intent)
+            finish()
+        }
+        findViewById<ImageButton>(R.id.Outfit7).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.house)
+            }
+            startActivity(intent)
+            finish()
+        }
+        findViewById<ImageButton>(R.id.Outfit8).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.house)
+            }
+
+            startActivity(intent)
+            finish()
+        }
+        findViewById<ImageButton>(R.id.Outfit9).setOnClickListener {
+            val intent = Intent(this@BarryDressUp, BarryCareScreen::class.java).apply {
+                // Pass the drawable resource ID of this specific outfit
+                putExtra("OUTFIT_RES_ID", R.drawable.house)
+            }
+            startActivity(intent)
+            finish()
+        }
+
+
     }
 }
