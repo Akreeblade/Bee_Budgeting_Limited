@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,10 +18,21 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
 class HomeScreen : AppCompatActivity() {
+
+    private lateinit var streakManager: StreakManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home_screen)
+
+        streakManager = StreakManager(this)
+        val result = streakManager.checkAndUpdateStreak()
+
+        if (result.isStreakUpdated) {
+            // Show a celebration or update your UI text view
+            Toast.makeText(this, "Streak: ${result.currentStreak} days! 🔥", Toast.LENGTH_SHORT).show()
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -70,6 +82,9 @@ class HomeScreen : AppCompatActivity() {
             startActivity(Intent(this, LoggingScreen::class.java))
             finish()
         }
+
+        val tvStreakCount = findViewById<TextView>(R.id.DailyStreak)
+        tvStreakCount.text = "🔥 ${streakManager.getCurrentStreak()} Days"
     }
 
     override fun onResume() {

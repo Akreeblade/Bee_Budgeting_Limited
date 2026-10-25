@@ -39,10 +39,15 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/profileicon" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/DailyStreak"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="1 August - 12 August 2026"
+                android:textColor="@color/Bright_yellow"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/Settingsbtn"
