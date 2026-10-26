@@ -40,6 +40,12 @@ To view all of your log entries, click on 'view all' on the home screen. This sc
 # Analytics
 On the analytics screen, you can choose to see a pie chart of the selected month's expenses, or the income for that month. If you want to view the analytics for a different month, click on the date to change it. The totals per category for that month will show up at the bottom of the pie chart.
 
+## Added Features
+# Barry Dress Up
+
+# Daily Streak
+When you log in, the app will add it to a streak.
+
 ## Developers
 Aidan Govender ST10438820 - UI, backend, databases, navigation, debugging, log in, sign up.
 Ceili Rain Abrahams ST10438681 - UI, Pie chart, date filters, category totals, databases, photo saving, category totals.
