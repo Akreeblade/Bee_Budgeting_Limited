@@ -42,14 +42,15 @@ On the analytics screen, you can choose to see a pie chart of the selected month
 
 ## Added Features
 # Barry Dress Up
+Barry, the mascot of our game, can now be dressed up! He has nine outfits to choose from. Simply click on the Barry icon in the taskbar at the bottom of the screen to navigate to Barry, then click on the star button to be taken to the dress up screen. There, you can select outfits for him based on the previews within the grid!
 
 # Daily Streak
-When you log in, the app will add it to a streak.
+When you log in consecutively, the app will add it to a streak. If you don't log in daily, you will lose your streak. The streak can be checked when you click on your profile.
 
 ## Developers
-Aidan Govender ST10438820 - UI, backend, databases, navigation, debugging, log in, sign up.
-Ceili Rain Abrahams ST10438681 - UI, Pie chart, date filters, category totals, databases, photo saving, category totals.
-Louise Lee ST10438795 - UI, logging entries, category selection, min/max budget goals, view all list of entries.
+Aidan Govender ST10438820 - UI, backend, databases, navigation, debugging, log in, sign up, daily streak, barry dress up.
+Ceili Rain Abrahams ST10438681 - UI, Pie chart, date filters, category totals, databases, photo saving, category totals, online database, fixing bugs with expenses and income.
+Louise Lee ST10438795 - UI, logging entries, category selection, min/max budget goals, view all list of entries, assets for barry dress up.
 
 
 youtube link for video presentation: https://www.youtube.com/watch?v=rxKZmPEU0Lo
