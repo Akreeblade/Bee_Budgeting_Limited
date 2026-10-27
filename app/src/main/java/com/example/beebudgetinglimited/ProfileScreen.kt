@@ -34,16 +34,16 @@ class ProfileScreen : AppCompatActivity() {
 
         val streakManager = StreakManager(this)
 
-        // Check and update the streak for today
+        // checks the streak then updates the streak
         val streakResult = streakManager.checkAndUpdateStreak()
 
-        // Find the daily streak TextView (id: textView15 in your XML)
+        // finds the daily streak text view
         val tvDailyStreak = findViewById<TextView>(R.id.textView15)
 
-        // Set the text dynamically to show the count
+        // dynamic seeting of text (yoo fire emoji)
         tvDailyStreak.text = "🔥 Daily Streak: ${streakResult.currentStreak} Days"
 
-        // Optional: Make the streak text clickable to show a quick message or info toast
+        // makes the streak clickable to display a message
         tvDailyStreak.setOnClickListener {
             Toast.makeText(
                 this,

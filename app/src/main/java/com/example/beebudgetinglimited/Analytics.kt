@@ -26,6 +26,13 @@ import java.util.Locale
 
 class Analytics : AppCompatActivity() {
 
+    /*
+    Geeksforgeeks, 2025. Android - Create a Pie Chart with Kotlin (Version n/a) [Source code]
+Available at:
+<https://www.geeksforgeeks.org/kotlin/android-create-a-pie-chart-with-kotlin/>
+[Accessed 16 September 2026].
+
+     */
     private lateinit var pieChart: PieChart
     private lateinit var tvDateRange: TextView
     private lateinit var tvChartTitle: TextView

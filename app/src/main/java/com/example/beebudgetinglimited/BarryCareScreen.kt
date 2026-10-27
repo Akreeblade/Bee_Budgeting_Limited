@@ -56,16 +56,14 @@ class BarryCareScreen : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-            // ====================================================
-            // --- ADD THIS CODE TO LOAD BARRY'S OUTFIT HERE ---
-            // ====================================================
+            //Barry outfit code
 
-            // 1. Find the ImageView where Barry (or his outfit) is displayed
+            // finds the image view
             val barryImageView = findViewById<ImageView>(R.id.BarryImage)
-            // 2. Check if an outfit image ID was passed from BarryDressUp
+            // Checks if outfit img was passed
             val outfitResId = intent.getIntExtra("OUTFIT_RES_ID", -1)
 
-            // 3. If an outfit was selected, display it on Barry!
+            // display outfit if selected
             if (outfitResId != -1) {
                 barryImageView.setImageResource(outfitResId)
             }
