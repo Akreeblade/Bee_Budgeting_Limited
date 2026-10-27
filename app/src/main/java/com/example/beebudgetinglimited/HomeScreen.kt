@@ -100,30 +100,35 @@ class HomeScreen : AppCompatActivity() {
             val recentTransactions = allTransactions.take(3)
             recyclerView.adapter = TransactionAdapter(recentTransactions)
 
-            // Calculate dynamic totals for Income, Expenses, and Balance
-            var totalIncome = 0
-            var totalExpenses = 0
+            // 2. Calculate dynamic totals for Income, Expenses, and Balance
+            var totalIncome = 0.0
+            var totalExpenses = 0.0
 
             for (item in allTransactions) {
-                val numericValue = kotlin.math.abs(item.amount).toInt()
-                if (item.isIncome) {
-                    totalIncome += numericValue
+                val absoluteAmount = kotlin.math.abs(item.amount)
+
+                // An item is an Expense if amount is negative OR isIncome is explicitly false
+                if (!item.isIncome || item.amount < 0) {
+                    totalExpenses += absoluteAmount
                 } else {
-                    totalExpenses += numericValue
+                    totalIncome += absoluteAmount
                 }
             }
 
             val balance = totalIncome - totalExpenses
 
-            findViewById<TextView>(R.id.tvIncomeTotal).text = "R$totalIncome"
-            findViewById<TextView>(R.id.tvExpensesTotal).text = "R$totalExpenses"
-            findViewById<TextView>(R.id.tvBalanceTotal).text = "R$balance"
+            // 3. Update Overview Card TextViews (Formatted cleanly as integers)
+            findViewById<TextView>(R.id.tvIncomeTotal).text = "R${totalIncome.toInt()}"
+            findViewById<TextView>(R.id.tvExpensesTotal).text = "R${totalExpenses.toInt()}"
+            findViewById<TextView>(R.id.tvBalanceTotal).text = "R${balance.toInt()}"
 
+            // 4. Update Budget Progress
             val prefs = getSharedPreferences("BudgetPrefs", Context.MODE_PRIVATE)
             val minBudget = prefs.getInt("minBudget", 1000)
             val maxBudget = prefs.getInt("maxBudget", 1500)
 
-            findViewById<TextView>(R.id.tvBudgetAmounts).text = "R$totalExpenses / R$maxBudget"
+            val expensesInt = totalExpenses.toInt()
+            findViewById<TextView>(R.id.tvBudgetAmounts).text = "R$expensesInt / R$maxBudget"
 
             val progressPercent = if (maxBudget > 0) {
                 ((totalExpenses.toFloat() / maxBudget) * 100).toInt().coerceIn(0, 100)

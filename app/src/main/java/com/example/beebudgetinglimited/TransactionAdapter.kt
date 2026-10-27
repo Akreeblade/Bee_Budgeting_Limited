@@ -28,7 +28,16 @@ class TransactionAdapter(private val transactionList: List<TransactionItem>) :
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val item = transactionList[position]
         holder.tvTitle.text = item.title
-        holder.tvAmount.text = item.amount.toString()
+
+        // Format amount: Display negative sign before "R" for expenses
+        val absValue = kotlin.math.abs(item.amount).toInt()
+        if (!item.isIncome || item.amount < 0) {
+            holder.tvAmount.text = "-R$absValue"
+            holder.tvAmount.setTextColor(android.graphics.Color.parseColor("#FF8A25")) // Orange/Red for Expenses
+        } else {
+            holder.tvAmount.text = "R$absValue"
+            holder.tvAmount.setTextColor(android.graphics.Color.parseColor("#EFFF4A")) // Yellow/Green for Income
+        }
 
         // Handle optional notes
         if (!item.note.isNullOrEmpty()) {
@@ -38,7 +47,7 @@ class TransactionAdapter(private val transactionList: List<TransactionItem>) :
             holder.tvNote.visibility = View.GONE
         }
 
-        //handles images
+        // Handles images
         if (!item.photoUri.isNullOrEmpty()) {
             holder.ivPhoto.visibility = View.VISIBLE
             holder.ivPhoto.setImageURI(Uri.parse(item.photoUri))

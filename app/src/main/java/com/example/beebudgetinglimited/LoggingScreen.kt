@@ -86,26 +86,25 @@ class LoggingScreen : AppCompatActivity() {
             finish()
         }
 
-        // Chip selection tracking
+        // Chip selection tracking via ChipGroup
+        val chipGroupType = findViewById<com.google.android.material.chip.ChipGroup>(R.id.chipGroupType)
         val cbIncome = findViewById<Chip>(R.id.cbIncome)
         val cbExpense = findViewById<Chip>(R.id.cbExpense)
 
         // Default selection setup
         cbIncome.isChecked = true
+        isIncomeSelected = true
 
-        cbIncome.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (!isIncomeSelected) {
+        // Listen for changes on the parent ChipGroup instead of individual chips
+        chipGroupType.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.cbIncome -> {
                     isIncomeSelected = true
-                    etCategory.setText("") // Reset incompatible selection
+                    etCategory.setText("") // Reset category on type switch
                 }
-            }
-        }
-        cbExpense.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (isIncomeSelected) {
+                R.id.cbExpense -> {
                     isIncomeSelected = false
-                    etCategory.setText("") // Reset incompatible selection
+                    etCategory.setText("") // Reset category on type switch
                 }
             }
         }
