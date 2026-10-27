@@ -40,11 +40,11 @@ To view all of your log entries, click on 'view all' on the home screen. This sc
 # Analytics
 On the analytics screen, you can choose to see a pie chart of the selected month's expenses, or the income for that month. If you want to view the analytics for a different month, click on the date to change it. The totals per category for that month will show up at the bottom of the pie chart.
 
-## Added Features
-# Barry Dress Up
+# Added Features
+## Barry Dress Up
 Barry, the mascot of our game, can now be dressed up! He has nine outfits to choose from. Simply click on the Barry icon in the taskbar at the bottom of the screen to navigate to Barry, then click on the star button to be taken to the dress up screen. There, you can select outfits for him based on the previews within the grid!
 
-# Daily Streak
+## Daily Streak
 When you log in consecutively, the app will add it to a streak. If you don't log in daily, you will lose your streak. The streak can be checked when you click on your profile.
 
 ## Developers
