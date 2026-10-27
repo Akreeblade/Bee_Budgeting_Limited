@@ -53,4 +53,4 @@ Ceili Rain Abrahams ST10438681 - UI, Pie chart, date filters, category totals, d
 Louise Lee ST10438795 - UI, logging entries, category selection, min/max budget goals, view all list of entries, assets for barry dress up.
 
 
-youtube link for video presentation: https://www.youtube.com/watch?v=rxKZmPEU0Lo
+youtube link for video presentation: https://www.youtube.com/watch?v=1K7CrMOA-k4
