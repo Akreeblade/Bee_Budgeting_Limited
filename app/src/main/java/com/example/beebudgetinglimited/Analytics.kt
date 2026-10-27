@@ -66,19 +66,25 @@ Available at:
         tvChartTitle = findViewById(R.id.tvChartTitle)
         legendContainer = findViewById(R.id.legendContainer)
 
+        val chipGroupType = findViewById<com.google.android.material.chip.ChipGroup>(R.id.chipGroupType)
         val chipExpenses = findViewById<Chip>(R.id.chipExpenses)
         val chipIncome = findViewById<Chip>(R.id.chipIncome)
 
+        // Set default checked state
         chipExpenses.isChecked = true
+        isIncomeView = false
 
-        chipExpenses.setOnClickListener {
-            isIncomeView = false
-            updateAnalyticsView()
-        }
-
-        chipIncome.setOnClickListener {
-            isIncomeView = true
-            updateAnalyticsView()
+        chipGroupType.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.chipExpenses -> {
+                    isIncomeView = false
+                    updateAnalyticsView()
+                }
+                R.id.chipIncome -> {
+                    isIncomeView = true
+                    updateAnalyticsView()
+                }
+            }
         }
 
         // Date selection listener to switch target month
@@ -148,14 +154,19 @@ Available at:
         val dateFormat = SimpleDateFormat("d MMMM yyyy", Locale.ENGLISH)
 
         // Retrieve recorded entries matching month and selected type
+        // Retrieve recorded entries matching month and selected type
         val matchingTransactions = TransactionRepository.getTransactions().filter { item ->
             try {
                 val parsedDate = dateFormat.parse(item.date)
                 if (parsedDate != null) {
                     val cal = Calendar.getInstance().apply { time = parsedDate }
-                    cal.get(Calendar.MONTH) == currentMonth &&
-                            cal.get(Calendar.YEAR) == currentYear &&
-                            item.isIncome == isIncomeView
+                    val isThisMonth = cal.get(Calendar.MONTH) == currentMonth &&
+                            cal.get(Calendar.YEAR) == currentYear
+
+                    // Determine if the item is truly an expense or income
+                    val isActuallyIncome = item.isIncome && item.amount >= 0
+
+                    isThisMonth && (isActuallyIncome == isIncomeView)
                 } else false
             } catch (e: Exception) {
                 false
